@@ -3,4 +3,5 @@
 *.swp
 endf70*
 *.dSYM
+main
 minireader_f

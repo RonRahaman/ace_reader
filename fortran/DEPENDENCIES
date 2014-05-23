@@ -1,3 +1,7 @@
+main.o: global.o
+main.o: constants.o
+main.o: ace.o
+
 ace.o: global.o
 ace.o: constants.o
 ace.o: material_header.o
