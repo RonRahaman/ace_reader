@@ -1,0 +1,3 @@
+        name      n_grid  grid_index      energy       total     elastic     fission  nu_fission  absorption     heatingindex_fissio   nu_t_data   nu_p_data   nu_d_datanu_d_precurs  nu_d_edist   reactions
+   92234.70c       25480           1       25480       25480       25480       25480       25480       25480           1           4          18          16          10          42           6          51
+    1001.70c         590           1         590         590         590         590         590         590           1           1           1           1           1           1           1           4
