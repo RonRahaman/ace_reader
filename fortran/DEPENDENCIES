@@ -1,0 +1,24 @@
+ace.o: global.o
+ace.o: constants.o
+ace.o: material_header.o
+ace.o: ace_header.o
+ace.o: string.o
+ace.o: fission.o
+
+ace_header.o: constants.o
+ace_header.o: endf_header.o
+
+string.o: constants.o
+
+global.o: ace_header.o
+
+fission.o: ace_header.o
+fission.o: constants.o
+fission.o: interpolation.o
+
+interpolation.o: endf_header.o
+interpolation.o: search.o
+interpolation.o: string.o
+interpolation.o: constants.o
+
+
