@@ -4,7 +4,6 @@ main.o: ace.o
 
 ace.o: global.o
 ace.o: constants.o
-ace.o: material_header.o
 ace.o: ace_header.o
 ace.o: string.o
 ace.o: fission.o

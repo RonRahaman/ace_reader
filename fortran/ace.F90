@@ -2,7 +2,6 @@ module ace
 
   use global
   use constants
-  use material_header,  only: Material
   use ace_header,       only: Nuclide, Reaction, SAlphaBeta, XsListing, &
                               DistEnergy
   use string,           only: to_str
