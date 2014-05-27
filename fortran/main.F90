@@ -4,21 +4,44 @@ program main
   use ace
   implicit none
 
-  integer :: i,j
-  integer, parameter :: n_nuclides = 2
-  integer, parameter :: n_sab = 0
-  integer, parameter :: n_listings = n_nuclides + n_sab
+  ! Directory containing ACE files (read from command line arg)
+  character(len=1028) :: data_dir
+  ! Size of global 'nuclides' array
+  integer, parameter  :: n_nuclides = 2
+  ! Size of global 'sab_table' array
+  integer, parameter  :: n_sab = 0
+  ! Size of global 'xs_listings' array
+  integer, parameter  :: n_listings = n_nuclides + n_sab
+  ! Loop controls
+  integer             :: i,j
 
+  ! Get command line arg
+  call get_command_argument(1, data_dir)
+
+  ! Stop if no arg is given
+  if (len_trim(data_dir) .eq. 0) then
+    print *, 'USAGE:  ./main data_dir'
+    print *, '    where data_dir is directory containing the ACE library files'
+    stop
+  endif
+  
+  ! Add trailing slash 
+  if (data_dir(len_trim(data_dir):len_trim(data_dir)) .ne. '/') then
+    data_dir = trim(data_dir) // '/'
+  endif
+
+  ! Allocate global arrays
   allocate(xs_listings(n_listings))
   allocate(nuclides(n_nuclides))
 
+  ! Poppulate xs_listings
   xs_listings(1) % name = '92234.70c'
   xs_listings(1) % type = ACE_NEUTRON
   xs_listings(1) % filetype = BINARY
   xs_listings(1) % location = 5781
   xs_listings(1) % recl = 4096
   xs_listings(1) % entries = 512
-  xs_listings(1) % path = '/homes/rahaman/data/endf70j'
+  xs_listings(1) % path = trim(data_dir) // 'endf70j'
 
   xs_listings(2) % name = '1001.70c'
   xs_listings(2) % type = ACE_NEUTRON
@@ -26,11 +49,13 @@ program main
   xs_listings(2) % location = 1
   xs_listings(2) % recl = 4096
   xs_listings(2) % entries = 512
-  xs_listings(2) % path = '/homes/rahaman/data/endf70a'
+  xs_listings(2) % path = trim(data_dir) // 'endf70a'
 
+  ! Read each xs_listings into nuclides
   call read_ace_table(1, 1)
   call read_ace_table(2, 2)
 
+  ! Print results to file
   call print_nuclides_info('nuclides_info.txt')
   call print_nuclides_values('nuclides_values.txt')
 
