@@ -16,8 +16,11 @@ parsed data from ACE files.
 
 To make it, simply run the Makefile.
 
-To use it, run ./main ~/data_dir where ~/data_dir is the location of your ACE
-library files
+To use it, run:
+
+./main ~/data_dir 
+
+where ~/data_dir is the location of your ACE library files (such as endf70a, endf70b, etc)
 
 -----
 C
