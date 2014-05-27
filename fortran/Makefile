@@ -1,6 +1,6 @@
 F90 = gfortran
 F90FLAGS = -cpp -std=f2008 -fbacktrace -g -fbounds-check -ffpe-trap=invalid,overflow,underflow
-LDFLAGS  += -g
+LDFLAGS  = -g
 OBJ = $(patsubst %.F90,%.o,$(wildcard *.F90))
 MAIN = main
 
